@@ -1,0 +1,5 @@
+/* src/styles/QuantityPicker.css */
+.qty-picker { display: flex; align-items: center; gap: 0.5rem; }
+.qty-picker button { width: 28px; height: 28px; border: 1px solid #bbb; background: #fff; cursor: pointer; border-radius: 4px; }
+.qty-picker button:disabled { opacity: 0.4; cursor: not-allowed; }
+.qty-picker input { width: 48px; text-align: center; border: 1px solid #bbb; border-radius: 4px; padding: 0.25rem; }
