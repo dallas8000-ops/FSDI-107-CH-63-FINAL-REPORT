@@ -9,15 +9,7 @@ import './styles/App.css';
 function App() {
   const [cart, setCart] = useState({});
   const updateCart = (id, qty) =>
-    setCart((prev) => {
-      const next = { ...prev };
-      if (!qty || qty <= 0) {
-        delete next[id];
-      } else {
-        next[id] = qty;
-      }
-      return next;
-    });
+    setCart((prev) => ({ ...prev, [id]: qty }));
 
   const cartCount = Object.values(cart).reduce((s, q) => s + q, 0);
 
