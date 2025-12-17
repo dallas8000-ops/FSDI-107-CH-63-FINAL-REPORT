@@ -3,48 +3,23 @@
 // Simple in-memory CRUD + dynamic image helper
 // ------------------------------------------
 
+import { products } from '../data/products.js';
 import { getAvailableImages } from '../utils/imageScanner.js';
 
 // ------------------------------------------------------------------
-// 1.  Internal memory store
+// 1.  Internal memory store - initialized from products.js
 // ------------------------------------------------------------------
-let items = [
-  {
-    id: 1,
-    name: 'Mechanical Keyboard',
-    price: 89.99,
-    image: 'keyboard.jpg',
-    description: 'RGB back-lit mechanical keyboard with blue switches.'
-  },
-  {
-    id: 2,
-    name: 'Wireless Mouse',
-    price: 29.99,
-    image: 'mouse.jpg',
-    description: 'Ergonomic wireless mouse with 6 programmable buttons.'
-  },
-  {
-    id: 3,
-    name: 'USB-C Hub',
-    price: 45.0,
-    image: 'hub.jpg',
-    description: '7-in-1 USB-C hub with HDMI, USB 3.0 and SD card reader.'
-  },
-  {
-    id: 4,
-    name: 'Webcam 1080p',
-    price: 59.99,
-    image: 'webcam.jpg',
-    description: 'Full-HD webcam with built-in microphone and privacy shutter.'
-  },
-  {
-    id: 5,
-    name: 'Monitor Stand',
-    price: 35.5,
-    image: 'stand.jpg',
-    description: 'Adjustable wooden monitor stand with storage drawer.'
-  }
-];
+let items = products.map(product => ({
+  id: product.id,
+  name: product.name,
+  price: product.price,
+  image: product.img || null, // Keep full path from products.js
+  description: product.description || '',
+  category: product.category || '',
+  stars: product.stars || 0,
+  oldPrice: product.oldPrice || null,
+  discount: product.discount || null
+}));
 
 // ------------------------------------------------------------------
 // 2.  CRUD helpers

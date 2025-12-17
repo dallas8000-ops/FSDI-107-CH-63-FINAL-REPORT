@@ -3,6 +3,44 @@
 /* -------------------------------------------------------------------
    CATALOG/GRID LAYOUT STYLES
    ------------------------------------------------------------------- */
+.catalog {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  min-height: calc(100vh - 200px);
+}
+
+.catalog h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 2rem 0;
+  text-align: center;
+}
+
+.catalog .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .catalog {
+    padding: 1.5rem 1rem;
+  }
+
+  .catalog h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .catalog .grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
 .catalog-page {
   background: linear-gradient(180deg, #f9fafb 0%, #f3f4f6 100%);
   min-height: 100vh;

@@ -9,7 +9,7 @@ const Navigation = ({ cartCount }) => (
       <input type="text" className="search-bar" placeholder="Search products…" />
 
       <div className="cart-icon">
-        <span className="material-icons">shopping_cart</span>
+        <span className="cart-icon-symbol">🛒</span>
         {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
       </div>
     </div>
