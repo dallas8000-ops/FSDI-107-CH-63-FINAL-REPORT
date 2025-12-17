@@ -1,0 +1,89 @@
+/* src/styles/Cart.css */
+
+.cart-summary {
+    position: sticky;
+    top: 0;
+    margin: 20px auto;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+    max-width: 800px; /* ⬅️ CRITICAL FIX: Ensures the cart summary is contained */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 100; 
+}
+
+.empty-cart {
+    text-align: center;
+    color: #666;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.cart-items-list {
+    margin-top: 10px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center; /* Vertically centers content */
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dashed #ccc;
+    font-size: 0.95rem;
+}
+
+/* 🟢 Style for the Item Image inside the Cart */
+.cart-item-image {
+    width: 50px; 
+    height: 50px;
+    object-fit: contain;
+    margin-right: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    flex-shrink: 0; /* Prevents image from shrinking */
+}
+
+.item-name {
+    flex-grow: 1; /* Allows the name to take up space */
+    font-weight: 500;
+    margin-right: 10px;
+}
+
+.item-controls {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 10px;
+    flex-shrink: 0; /* Prevents controls from shrinking */
+}
+
+.item-controls button {
+    padding: 4px 8px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    background-color: white;
+    border-radius: 3px;
+}
+
+.item-controls input[type="number"] {
+    width: 40px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.item-controls .remove-btn {
+    background-color: #dc3545;
+    color: white;
+    border-color: #dc3545;
+    margin-left: 10px;
+}
+
+.cart-total {
+    text-align: right;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 2px solid #333;
+    font-size: 1.2rem;
+}
