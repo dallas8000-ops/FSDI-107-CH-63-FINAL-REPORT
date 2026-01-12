@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/Cart.css'; 
 
-export default function Cart({ cartItems, onUpdateQuantity, onRemoveFromCart }) {
+export default function Cart({ cartItems, onUpdateQuantity, onRemoveFromCart, onClearCart }) {
   
   const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
   const cartTotal = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
@@ -9,26 +10,36 @@ export default function Cart({ cartItems, onUpdateQuantity, onRemoveFromCart }) 
   if (cartItems.length === 0) {
     return (
       <div className="cart-summary empty-cart">
-        🛒 Cart is Empty ({totalItems} items)
+        <h2>🛒 Cart is Empty</h2>
+        <p>Your shopping cart is currently empty. Add items from the catalog!</p>
       </div>
     );
   }
 
   return (
     <div className="cart-summary">
-      <h2>🛒 Shopping Cart ({totalItems} items)</h2>
+      <div className="cart-header">
+        <h2>🛒 Shopping Cart ({totalItems} items)</h2>
+        <button className="clear-cart-btn" onClick={onClearCart}>
+          Clear Cart
+        </button>
+      </div>
       
       <div className="cart-items-list">
         {cartItems.map(item => (
           <div key={item.id} className="cart-item">
             
             <img 
-                src={item.img} 
+                src={item.image ? (item.image.startsWith('/') ? item.image : `/images/${item.image}`) : '/images/placeholder.png'}
                 alt={item.name} 
-                className="cart-item-image" 
+                className="cart-item-image"
+                onError={(e) => { e.target.src = '/images/placeholder.png'; }}
             />
 
-            <span className="item-name">{item.name}</span>
+            <div className="cart-item-details">
+              <span className="item-name">{item.name}</span>
+              <span className="item-unit-price">${item.price.toFixed(2)} each</span>
+            </div>
             
             <span className="item-price">${(item.price * item.quantity).toFixed(2)}</span>
             
@@ -37,8 +48,9 @@ export default function Cart({ cartItems, onUpdateQuantity, onRemoveFromCart }) 
               <button 
                 onClick={() => onUpdateQuantity(item.id, item.quantity - 1)}
                 disabled={item.quantity <= 1} 
+                className="qty-btn"
               >
-                -
+                −
               </button>
               
               {/* Quantity Input */}
@@ -46,12 +58,14 @@ export default function Cart({ cartItems, onUpdateQuantity, onRemoveFromCart }) 
                 type="number" 
                 value={item.quantity} 
                 min="1"
-                onChange={(e) => onUpdateQuantity(item.id, parseInt(e.target.value))}
+                onChange={(e) => onUpdateQuantity(item.id, parseInt(e.target.value) || 1)}
+                className="qty-input"
               />
               
               {/* Increase Quantity Button */}
               <button 
                 onClick={() => onUpdateQuantity(item.id, item.quantity + 1)}
+                className="qty-btn"
               >
                 +
               </button>
@@ -59,9 +73,9 @@ export default function Cart({ cartItems, onUpdateQuantity, onRemoveFromCart }) 
               {/* Remove Button */}
               <button 
                 className="remove-btn"
-                onClick={() => onRemoveFromCart(item.id)}
+                onClick={() => onRemoveFromCart(item.id, 0)}
               >
-                Remove
+                ✕ Remove
               </button>
             </div>
           </div>
@@ -70,6 +84,7 @@ export default function Cart({ cartItems, onUpdateQuantity, onRemoveFromCart }) 
       
       <div className="cart-total">
         <strong>Total: ${cartTotal.toFixed(2)}</strong>
+        <Link to="/shipping" className="checkout-btn">Proceed to Shipping →</Link>
       </div>
     </div>
   );

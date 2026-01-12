@@ -1,19 +1,44 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/Navigation.css';
 
-const Navigation = ({ cartCount }) => (
-  <header className="nav">
-    <div className="nav-container">
-      <div className="logo">Computer Gadgets</div>
+const Navigation = ({ cartCount, darkMode, setDarkMode }) => {
+  return (
+    <header className="nav">
+      <div className="nav-container">
+        <Link to="/" className="logo">
+          Computer Gadgets
+        </Link>
 
-      <input type="text" className="search-bar" placeholder="Search products…" />
+        <nav className="nav-links">
+          <Link to="/catalog" className="nav-link">
+            Catalog
+          </Link>
+          <Link to="/about" className="nav-link">
+            About
+          </Link>
+          <Link to="/contact" className="nav-link">
+            Contact
+          </Link>
+        </nav>
 
-      <div className="cart-icon">
-        <span className="cart-icon-symbol">🛒</span>
-        {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+        <input type="text" className="search-bar" placeholder="Search products…" />
+
+        <button 
+          className="dark-mode-toggle"
+          onClick={() => setDarkMode(!darkMode)}
+          title={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+        >
+          {darkMode ? '☀️' : '🌙'}
+        </button>
+
+        <Link to="/cart" className="cart-icon">
+          <span className="cart-icon-symbol">🛒</span>
+          {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+        </Link>
       </div>
-    </div>
-  </header>
-);
+    </header>
+  );
+};
 
 export default Navigation;

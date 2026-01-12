@@ -10,12 +10,112 @@
   min-height: calc(100vh - 200px);
 }
 
-.catalog h2 {
+.catalog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.catalog-header h2 {
   font-size: 2.5rem;
   font-weight: 700;
   color: #1a1a1a;
-  margin: 0 0 2rem 0;
-  text-align: center;
+  margin: 0;
+}
+
+.edit-mode-toggle {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.edit-mode-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.edit-panel {
+  background: #f9f9f9;
+  border: 2px solid #667eea;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.edit-panel h3 {
+  margin-top: 0;
+  color: #667eea;
+}
+
+.edit-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.edit-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.edit-form input {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.edit-form input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.edit-buttons {
+  display: flex;
+  gap: 1rem;
+  grid-column: 1 / -1;
+  margin-top: 1rem;
+}
+
+.save-btn,
+.cancel-btn {
+  flex: 1;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.save-btn {
+  background: #22c55e;
+  color: white;
+}
+
+.save-btn:hover {
+  background: #16a34a;
+}
+
+.cancel-btn {
+  background: #ef4444;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background: #dc2626;
 }
 
 .catalog .grid {
@@ -25,19 +125,72 @@
   margin-top: 1.5rem;
 }
 
+.item-card-wrapper {
+  position: relative;
+}
+
+.item-edit-controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.edit-btn,
+.delete-btn {
+  flex: 1;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.edit-btn {
+  background: #3b82f6;
+  color: white;
+}
+
+.edit-btn:hover {
+  background: #2563eb;
+}
+
+.delete-btn {
+  background: #ef4444;
+  color: white;
+}
+
+.delete-btn:hover {
+  background: #dc2626;
+}
+
 @media (max-width: 768px) {
   .catalog {
     padding: 1.5rem 1rem;
   }
 
-  .catalog h2 {
+  .catalog-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .catalog-header h2 {
     font-size: 2rem;
-    margin-bottom: 1.5rem;
+  }
+
+  .edit-mode-toggle {
+    width: 100%;
   }
 
   .catalog .grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+
+  .edit-form {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -165,6 +318,89 @@
     .product-image {
         height: 280px; /* Slightly smaller image on tablet */
     }
+}
+
+/* Dark mode styles */
+body.dark-mode .catalog {
+  background: #1a1a1a;
+  color: #e0e0e0;
+}
+
+body.dark-mode .catalog-header h2 {
+  color: #e0e0e0;
+}
+
+body.dark-mode .edit-panel {
+  background: #2a2a2a;
+  border-color: #667eea;
+  color: #e0e0e0;
+}
+
+body.dark-mode .edit-form label {
+  color: #e0e0e0;
+}
+
+body.dark-mode .edit-form input,
+body.dark-mode .edit-form textarea {
+  background: #1a1a1a;
+  color: #e0e0e0;
+  border-color: #444;
+}
+
+body.dark-mode .grid {
+  background: #1a1a1a;
+}
+
+body.dark-mode .item-card-wrapper {
+  background: #2a2a2a;
+}
+
+body.dark-mode .item-card {
+  background: #2a2a2a;
+  border: 1px solid #444;
+  color: #e0e0e0;
+}
+
+body.dark-mode .item-image-container {
+  background: #1a1a1a;
+}
+
+body.dark-mode .item-info {
+  background: #2a2a2a;
+  color: #e0e0e0;
+}
+
+body.dark-mode .item-name {
+  color: #e0e0e0;
+}
+
+body.dark-mode .item-description {
+  color: #aaa;
+}
+
+body.dark-mode .price-section {
+  color: #e0e0e0;
+}
+
+body.dark-mode .old-price {
+  color: #888;
+}
+
+body.dark-mode .current-price {
+  color: #667eea;
+}
+
+body.dark-mode .rating {
+  color: #e0e0e0;
+}
+
+body.dark-mode .quantity-section {
+  color: #e0e0e0;
+}
+
+body.dark-mode .discount-badge {
+  background: #667eea;
+  color: white;
 }
 
 /* Mobile Optimization (max-width: 600px) */

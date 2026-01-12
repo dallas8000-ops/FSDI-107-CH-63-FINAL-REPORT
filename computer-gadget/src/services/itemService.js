@@ -9,6 +9,8 @@ import { getAvailableImages } from '../utils/imageScanner.js';
 // ------------------------------------------------------------------
 // 1.  Internal memory store - initialized from products.js
 // ------------------------------------------------------------------
+console.log('itemService: products imported:', products);
+
 let items = products.map(product => ({
   id: product.id,
   name: product.name,
@@ -21,10 +23,15 @@ let items = products.map(product => ({
   discount: product.discount || null
 }));
 
+console.log('itemService: items initialized:', items);
+
 // ------------------------------------------------------------------
 // 2.  CRUD helpers
 // ------------------------------------------------------------------
-export const getItems = () => Promise.resolve([...items]);
+export const getItems = () => {
+  console.log('getItems called, returning:', items);
+  return Promise.resolve([...items]);
+};
 
 export const addItem = (item) => {
   const newItem = { ...item, id: Math.max(...items.map((i) => i.id), 0) + 1 };
@@ -50,10 +57,16 @@ export const deleteItem = (id) => {
 // 3.  Refresh items with images that actually exist in public/images
 // ------------------------------------------------------------------
 export const refreshItems = async () => {
-  const available = await getAvailableImages(); // string[] of file names
-  items = items.map((it) =>
-    available.includes(it.image) ? it : { ...it, image: null }
-  );
+  try {
+    const available = await getAvailableImages(); // string[] of file names
+    if (Array.isArray(available)) {
+      items = items.map((it) =>
+        available.includes(it.image) ? it : { ...it, image: null }
+      );
+    }
+  } catch (error) {
+    console.log('Image refresh skipped');
+  }
   return [...items];
 };
 

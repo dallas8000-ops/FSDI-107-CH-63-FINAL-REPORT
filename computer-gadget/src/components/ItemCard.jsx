@@ -2,7 +2,9 @@ import React from 'react';
 import QuantityPicker from './QuantityPicker';
 import '../styles/ItemCard.css';
 
-const ItemCard = ({ item, cart, updateCart }) => {
+const ItemCard = ({ item, cart = {}, updateCart = () => {} }) => {
+  if (!item) return <div>Item not found</div>;
+
   const qty = cart[item.id] || 0;
   const total = qty > 0 ? qty * item.price : 0;
 
@@ -12,8 +14,8 @@ const ItemCard = ({ item, cart, updateCart }) => {
     <article className="item-card">
       <div className="item-image-container">
         <img
-          src={item.image ? (item.image.startsWith('/') ? item.image : `/images/${item.image}`) : '/images/placeholder.png'}
-          alt={item.name}
+          src={item.image && typeof item.image === 'string' && item.image.startsWith('/') ? item.image : (item.image ? `/images/${item.image}` : '/images/placeholder.png')}
+          alt={item.name || 'Product'}
           className="item-image"
           onError={(e) => { e.target.src = '/images/placeholder.png'; }}
         />

@@ -83,5 +83,92 @@ export const products = [
     stars: 4.3,
     description: 'Large surface area for multiple monitors and gear.',
     category: 'Furniture'
+  },
+  // --- NEWLY ADDED PRODUCTS (IDs 9-16) ---
+  {
+    id: 9, 
+    name: 'Dell Premium Laptop',
+    img: '/images/Dell Laptop.jpg',
+    price: 899.99,
+    oldPrice: 1099.99,
+    discount: 18,
+    stars: 4.8,
+    description: 'Powerful performance with stunning display and long battery life.',
+    category: 'Laptop'
+  },
+  {
+    id: 10, 
+    name: 'Professional Drones',
+    img: '/images/Drones.jpg',
+    price: 1299.00,
+    oldPrice: 1499.00,
+    discount: 13,
+    stars: 4.7,
+    description: 'High-performance drone with 4K camera and extended flight time.',
+    category: 'Drone'
+  },
+  {
+    id: 11, 
+    name: 'iPhone Latest Model',
+    img: '/images/Iphone.jpg',
+    price: 999.00,
+    oldPrice: 1099.00,
+    discount: 9,
+    stars: 4.9,
+    description: 'Latest generation smartphone with advanced camera system.',
+    category: 'Phone'
+  },
+  {
+    id: 12, 
+    name: 'Nintendo 3DS Console',
+    img: '/images/Nintendo 3DS.jpg',
+    price: 299.99,
+    oldPrice: 349.99,
+    discount: 14,
+    stars: 4.6,
+    description: 'Portable gaming with 3D display and exclusive titles.',
+    category: 'Gaming'
+  },
+  {
+    id: 13, 
+    name: 'Oculus VR Headset',
+    img: '/images/Oculus Headset.jpg',
+    price: 799.00,
+    oldPrice: 899.00,
+    discount: 11,
+    stars: 4.7,
+    description: 'Immersive virtual reality experience for gaming and entertainment.',
+    category: 'VR'
+  },
+  {
+    id: 14, 
+    name: 'Phone Card Holder',
+    img: '/images/Phone Card holder.jpg',
+    price: 19.99,
+    stars: 4.4,
+    description: 'Stylish and secure card holder for your smartphone.',
+    category: 'Accessory'
+  },
+  {
+    id: 15, 
+    name: 'PlayStation 5 Console',
+    img: '/images/PS5.jpg',
+    price: 499.99,
+    oldPrice: 549.99,
+    discount: 9,
+    stars: 4.9,
+    description: 'Next-generation gaming console with stunning graphics and exclusive games.',
+    category: 'Gaming'
+  },
+  {
+    id: 16, 
+    name: 'PS5 Controller',
+    img: '/images/PS5 Controller.jpg',
+    price: 74.99,
+    oldPrice: 89.99,
+    discount: 17,
+    stars: 4.8,
+    description: 'Advanced haptic feedback and adaptive trigger technology.',
+    category: 'Gaming'
   }
 ];
