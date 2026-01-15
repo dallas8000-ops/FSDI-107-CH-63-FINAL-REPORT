@@ -38,6 +38,11 @@ export default function NavBar({ totalItems = 0, onCartClick }) {
               </Link>
             </li>
             <li className="nav-item">
+              <Link to="/admin" className="nav-link">
+                Admin
+              </Link>
+            </li>
+            <li className="nav-item">
               <button 
                 className="nav-link btn btn-link" 
                 onClick={onCartClick}
