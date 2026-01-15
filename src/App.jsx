@@ -8,26 +8,27 @@ import Catalog from './components/Catalog';
 import NotFound from './components/NotFound';
 import Footer from './components/Footer';
 import Adm from './pages/Adm';
+import GlobalProvider from './state/globalProvider'
 
 function App() {
   return (
-    <BrowserRouter>
-      <div>
-        <Navbar />
-        
-        <main className="bg-light py-4">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/catalog" element={<Catalog />} />
-            <Route path="/admin" element={<Adm />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </main>
-
-        <Footer />
-      </div>
-    </BrowserRouter>
+    <GlobalProvider>
+      <BrowserRouter>
+        <div>
+          <Navbar />
+          <main className="bg-light py-4 px-5">
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/about' element={<About />} />
+              <Route path='/catalog' element={<Catalog />} />
+              <Route path='/admin' element={<Adm />} />
+              <Route path='*' element={<NotFound />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </BrowserRouter>
+    </GlobalProvider>
   );
 }
 

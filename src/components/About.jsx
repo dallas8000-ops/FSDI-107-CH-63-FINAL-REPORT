@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { IconInfoCircle } from '@tabler/icons-react';
 import '../styles/About.css';
 
 function About() {
@@ -16,7 +17,7 @@ function About() {
   return (
     <main className="about">
       <section className="about-hero">
-        <h1>🖥️ About Computer Gadgets Store</h1>
+        <h1>🖥️ About Computer Gadgets Store <IconInfoCircle size={32} color="#F7B32B" style={{verticalAlign: 'middle', marginLeft: 8}} /></h1>
         <p className="subtitle">Your trusted destination for premium computer technology</p>
       </section>
 

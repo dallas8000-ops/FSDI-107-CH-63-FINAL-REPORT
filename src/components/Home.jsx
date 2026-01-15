@@ -1,4 +1,5 @@
 import React from 'react';
+import { IconHome } from '@tabler/icons-react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Home.css';
 
@@ -9,7 +10,7 @@ const Home = () => {
     <main className="home">
       <section className="hero">
         <div className="hero-content">
-          <h1>Computer Gadgets Store</h1>
+          <h1>Computer Gadgets Store <IconHome size={38} color="#4F8EF7" style={{verticalAlign: 'middle', marginLeft: 8}} /></h1>
           <p>Welcome to your favorite computer gadgets shop!</p>
           <p className="subtitle">Discover the latest and greatest in computer technology</p>
           <button className="cta-button" onClick={() => navigate('/catalog')}>

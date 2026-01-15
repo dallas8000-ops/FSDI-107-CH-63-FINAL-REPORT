@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { IconUserShield } from '@tabler/icons-react';
 import '../styles/Admin.css';
 
 function Adm() {
@@ -42,7 +43,7 @@ function Adm() {
   return (
     <main className="admin-container">
       <section className="admin-header">
-        <h1>Admin Dashboard</h1>
+        <h1>Admin Dashboard <IconUserShield size={32} color="#E94F37" style={{verticalAlign: 'middle', marginLeft: 8}} /></h1>
       </section>
 
       <section className="admin-content">

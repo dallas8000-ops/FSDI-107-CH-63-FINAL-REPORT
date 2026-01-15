@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { IconDeviceImac } from '@tabler/icons-react';
 import { getItems } from '../services/itemService';
 import ItemCard from './ItemCard';
 import '../styles/Catalog.css';
@@ -42,7 +43,7 @@ const Catalog = ({ cart, updateCart, setItems: setParentItems, items: parentItem
   return (
     <main className="catalog">
       <div className="catalog-header">
-        <h2>Our Products</h2>
+        <h2>Our Products <IconDeviceImac size={28} color="#43AA8B" style={{verticalAlign: 'middle', marginLeft: 8}} /></h2>
         <button
           className="edit-mode-toggle"
           onClick={() => setIsEditing(!isEditing)}
