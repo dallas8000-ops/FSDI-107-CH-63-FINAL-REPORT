@@ -53,7 +53,7 @@ export default function NavBar({ totalItems = 0, onCartClick }) {
                 style={{ display: 'inline-flex', alignItems: 'center' }}
               >
                 🛒 Cart ({totalItems})
-                <span style={{ color: 'maroon', marginLeft: '12px', fontWeight: 'bold' }}>Barney</span>
+                <span style={{ color: 'maroon', marginLeft: '12px', fontWeight: 'bold' }}>{user.name}</span>
               </button>
             </li>
           </ul>
