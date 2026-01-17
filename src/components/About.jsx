@@ -54,17 +54,14 @@ function About() {
         <div className="about-section">
           <h2>Contact Information</h2>
           <p>
-            <span style={{ color: 'blue', fontFamily: 'Lucida Handwriting' }}>
-              {isEmailVisible ? 'dallas8000@gmail.com' : 'Contact information available upon request.'}
+            <span
+              style={{ color: 'blue', fontFamily: 'Lucida Handwriting', cursor: 'pointer' }}
+              onMouseEnter={showEmailInformation}
+              onMouseLeave={hideEmailInformation}
+            >
+              {isEmailVisible ? 'dallas8000@gmail.com' : 'Hover here to show my email'}
             </span>
-            <br />
-            {isEmailVisible ? '' : 'Please click the button below to reveal my email.'}
           </p>
-          {isEmailVisible ? (
-            <button className="btn btn-primary" onClick={hideEmailInformation}>Hide my email</button>
-          ) : (
-            <button className="btn btn-secondary" onClick={showEmailInformation}>Show my email</button>
-          )}
         </div>
       </section>
     <footer className="about-footer" style={{background: '#222', color: '#fff', padding: '2rem 0', marginTop: '2rem'}}>
