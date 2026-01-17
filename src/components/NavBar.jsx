@@ -2,7 +2,7 @@
 
 import React, { useState, useContext } from "react";
 import { Link } from 'react-router-dom';
-import { IconHome, IconInfoCircle, IconDeviceImac, IconUserShield } from '@tabler/icons-react';
+import { IconHome, IconInfoCircle, IconDeviceImac, IconUserShield, IconShoppingCart } from '@tabler/icons-react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/GlobalComponents.css';
 import GlobalContext from '../state/globalContext';
@@ -48,11 +48,17 @@ export default function NavBar({ totalItems = 0, onCartClick }) {
             </li>
             <li className="nav-item">
               <button 
-                className="nav-link btn btn-link" 
+                className="nav-link btn btn-link position-relative" 
                 onClick={onCartClick}
                 style={{ display: 'inline-flex', alignItems: 'center' }}
               >
-                🛒 Cart ({totalItems})
+                <IconShoppingCart size={22} color="#4F8EF7" style={{marginRight: 6}} />
+                Cart
+                {totalItems > 0 && (
+                  <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style={{fontSize: '0.75em'}}>
+                    {totalItems}
+                  </span>
+                )}
                 <span style={{ color: 'maroon', marginLeft: '12px', fontWeight: 'bold' }}>{user.name}</span>
               </button>
             </li>

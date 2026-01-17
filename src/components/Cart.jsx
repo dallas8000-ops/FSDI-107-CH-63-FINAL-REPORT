@@ -1,4 +1,5 @@
 import React from 'react';
+import { IconTrash } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 import '../styles/Cart.css'; 
 
@@ -74,8 +75,10 @@ export default function Cart({ cartItems, onUpdateQuantity, onRemoveFromCart, on
               <button 
                 className="remove-btn"
                 onClick={() => onRemoveFromCart(item.id, 0)}
+                title="Remove from cart"
+                style={{ display: 'flex', alignItems: 'center', gap: '4px' }}
               >
-                ✕ Remove
+                <IconTrash size={18} color="#E94F37" /> Remove
               </button>
             </div>
           </div>

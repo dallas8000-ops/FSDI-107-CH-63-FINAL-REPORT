@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { IconInfoCircle } from '@tabler/icons-react';
+import Footer from './Footer';
 import '../styles/About.css';
 
 function About() {
   const [isEmailVisible, setIsEmailVisible] = useState(false);
-  const [isHovering, setIsHovering] = useState(false);
 
   function showEmailInformation() {
     setIsEmailVisible(true);
@@ -55,22 +55,27 @@ function About() {
           <h2>Contact Information</h2>
           <p>
             <span style={{ color: 'blue', fontFamily: 'Lucida Handwriting' }}>
-              {isEmailVisible || isHovering ? 'dallas8000@gmail.com' : 'Contact information available upon request.'}
+              {isEmailVisible ? 'dallas8000@gmail.com' : 'Contact information available upon request.'}
             </span>
             <br />
-            {isEmailVisible || isHovering ? '' : 'Please click the button below to reveal my email.'}
+            {isEmailVisible ? '' : 'Please click the button below to reveal my email.'}
           </p>
-          <button className="btn btn-primary" onClick={hideEmailInformation}>Hide my email</button>
-          <button 
-            className="btn btn-secondary" 
-            onClick={showEmailInformation}
-            onMouseEnter={() => setIsHovering(true)}
-            onMouseLeave={() => setIsHovering(false)}
-          >
-            Show my email
-          </button>
+          {isEmailVisible ? (
+            <button className="btn btn-primary" onClick={hideEmailInformation}>Hide my email</button>
+          ) : (
+            <button className="btn btn-secondary" onClick={showEmailInformation}>Show my email</button>
+          )}
         </div>
       </section>
+    <footer className="about-footer" style={{background: '#222', color: '#fff', padding: '2rem 0', marginTop: '2rem'}}>
+      <div style={{maxWidth: '900px', margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+        <div style={{marginBottom: '0.5rem', fontWeight: 'bold', fontSize: '1.1rem'}}>Business Address</div>
+        <div>1234 Tech Avenue, Suite 100, San Diego, CA 92101</div>
+        <div style={{marginTop: '0.5rem', fontWeight: 'bold', fontSize: '1.1rem'}}>Business Contact</div>
+        <div>Phone: (555) 123-4567 &nbsp;|&nbsp; Email: dallas8000@gmail.com</div>
+      </div>
+    </footer>
+    <Footer />
     </main>
   );
 }
