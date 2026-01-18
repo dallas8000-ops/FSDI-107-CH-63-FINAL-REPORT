@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { IconDeviceImac } from '@tabler/icons-react';
 import { getItems } from '../services/itemService';
 import ItemCard from './ItemCard';
 import '../styles/Catalog.css';
 
-const Catalog = ({ cart, updateCart, setItems: setParentItems, items: parentItems }) => {
+import GlobalContext from '../state/globalContext';
+
+const Catalog = ({ setItems: setParentItems, items: parentItems }) => {
+  const { cart, addProductToCart, removeProductFromCart } = useContext(GlobalContext);
   const [items, setItems] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
@@ -143,7 +146,7 @@ const Catalog = ({ cart, updateCart, setItems: setParentItems, items: parentItem
         ) : (
           items.map((item) => (
             <div key={item.id} className="item-card-wrapper">
-              <ItemCard item={item} cart={cart} updateCart={updateCart} />
+              <ItemCard item={item} cart={cart} addProductToCart={addProductToCart} removeProductFromCart={removeProductFromCart} />
               {isEditing && (
                 <div className="item-edit-controls">
                   <button

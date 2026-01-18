@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { IconInfoCircle } from '@tabler/icons-react';
+import { IconInfoCircle, IconShoppingCart } from '@tabler/icons-react';
+import { Link } from 'react-router-dom';
 import Footer from './Footer';
 import '../styles/About.css';
 
@@ -19,6 +20,16 @@ function About() {
       <section className="about-hero">
         <h1>🖥️ About Computer Gadgets Store <IconInfoCircle size={32} color="#F7B32B" style={{verticalAlign: 'middle', marginLeft: 8}} /></h1>
         <p className="subtitle">Your trusted destination for premium computer technology</p>
+        <Link to="/cart" style={{ textDecoration: 'none' }}>
+          <button
+            type="button"
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, marginTop: '1rem', display: 'flex', alignItems: 'center' }}
+            aria-label="Go to cart"
+          >
+            <IconShoppingCart size={28} color="#4F8EF7" style={{marginRight: 8}} />
+            <span style={{color: '#4F8EF7', fontWeight: 'bold', fontSize: '1rem'}}>Cart</span>
+          </button>
+        </Link>
       </section>
 
       <section className="about-content">

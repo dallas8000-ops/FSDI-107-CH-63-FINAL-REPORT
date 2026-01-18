@@ -232,3 +232,26 @@ html {
   color: #718096;
   font-size: 0.8rem;
 }
+
+.dark-mode {
+  background-color: #181818 !important;
+  color: #f1f1f1 !important;
+}
+.light-mode {
+  background-color: #f8f9fa !important;
+  color: #222 !important;
+}
+
+.bg-dark {
+  background-color: #181818 !important;
+}
+.bg-light {
+  background-color: #f8f9fa !important;
+}
+
+.text-light {
+  color: #f1f1f1 !important;
+}
+.text-dark {
+  color: #222 !important;
+}

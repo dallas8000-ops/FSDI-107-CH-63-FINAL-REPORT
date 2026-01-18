@@ -15,7 +15,7 @@ let items = products.map(product => ({
   id: product.id,
   name: product.name,
   price: product.price,
-  image: product.img || null, // Keep full path from products.js
+  image: product.image || null, // Use correct image property
   description: product.description || '',
   category: product.category || '',
   stars: product.stars || 0,

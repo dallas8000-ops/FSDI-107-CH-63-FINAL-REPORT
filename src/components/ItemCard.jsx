@@ -2,22 +2,34 @@ import React from 'react';
 import QuantityPicker from './QuantityPicker';
 import '../styles/ItemCard.css';
 
-const ItemCard = ({ item, cart = {}, updateCart = () => {} }) => {
+const ItemCard = ({ item, cart = {}, addProductToCart, removeProductFromCart }) => {
   if (!item) return <div>Item not found</div>;
 
-  const qty = cart[item.id] || 0;
+  // Assume cart is an array of items
+  const cartItem = Array.isArray(cart) ? cart.find(ci => ci.id === item.id) : undefined;
+  const qty = cartItem ? cartItem.quantity || 1 : 0;
   const total = qty > 0 ? qty * item.price : 0;
 
-  const handleChange = (newQty) => updateCart(item.id, newQty);
+  const handleChange = (newQty) => {
+    if (newQty > 0) {
+      addProductToCart({ ...item, quantity: newQty });
+    } else {
+      removeProductFromCart(item.id);
+    }
+  };
 
   return (
     <article className="item-card">
       <div className="item-image-container">
         <img
-          src={item.image && typeof item.image === 'string' && item.image.startsWith('/') ? item.image : (item.image ? `/images/${item.image}` : '/images/placeholder.png')}
+          src={item.image && typeof item.image === 'string' && item.image.startsWith('/') ? item.image : (item.image ? `/images/${item.image}` : '/images/Placeholder.jpg')}
           alt={item.name || 'Product'}
           className="item-image"
-          onError={(e) => { e.target.src = '/images/placeholder.png'; }}
+          onError={(e) => {
+            if (!e.target.src.endsWith('/images/Placeholder.jpg')) {
+              e.target.src = '/images/Placeholder.jpg';
+            }
+          }}
         />
         {item.discount && (
           <span className="discount-badge">-{item.discount}%</span>
@@ -47,6 +59,13 @@ const ItemCard = ({ item, cart = {}, updateCart = () => {} }) => {
           <label className="quantity-label">Quantity:</label>
           <QuantityPicker value={qty} onChange={handleChange} />
         </div>
+
+        <button
+          className="btn btn-dark mt-4"
+          onClick={() => addProductToCart({ ...item, quantity: qty > 0 ? qty : 1 })}
+        >
+          Add Product
+        </button>
 
         {qty > 0 && (
           <div className="total-section">

@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { IconTrash } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 import '../styles/Cart.css'; 
+import GlobalContext from '../state/globalContext';
 
-export default function Cart({ cartItems, onUpdateQuantity, onRemoveFromCart, onClearCart }) {
-  console.log('[Cart Debug] cartItems:', cartItems);
-  const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
-  const cartTotal = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
-  if (cartItems.length === 0) {
+export default function Cart() {
+  const { cart, removeProductFromCart, clearCart, updateCartItemQuantity } = useContext(GlobalContext);
+
+  // Debug: Log cart items on every render
+  console.log('[Cart Debug] cart:', cart);
+
+  const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+  const cartTotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+
+  if (cart.length === 0) {
     return (
       <div className="cart-summary empty-cart">
         <h2>🛒 Cart is Empty</h2>
@@ -20,30 +26,32 @@ export default function Cart({ cartItems, onUpdateQuantity, onRemoveFromCart, on
     <div className="cart-summary">
       <div className="cart-header">
         <h2>🛒 Shopping Cart ({totalItems} items)</h2>
-        <button className="clear-cart-btn" onClick={onClearCart}>
+        <button className="clear-cart-btn" onClick={clearCart}>
           Clear Cart
         </button>
         <button style={{marginLeft: '1rem', background: '#eee', color: '#333', border: '1px solid #ccc', borderRadius: '6px', padding: '0.5rem 1rem'}}
-          onClick={() => console.log('Current cart items:', cartItems)}>
+          onClick={() => console.log('Current cart items:', cart)}>
           Log Cart Items
         </button>
       </div>
       <div className="cart-items-list">
-        {cartItems.map(item => {
+        {cart.map(item => {
+          // Debug: Log each cart item
           console.log('Cart item:', item);
           return (
             <div key={item.id} className="cart-item">
               {/* Debug: Warn if image property is missing or empty */}
               {(!item.image || item.image === "") && console.warn(`Cart item with id ${item.id} is missing image property!`, item)}
-              {/* Hardcoded test image to diagnose image loading */}
+              {/* Actual product image with fallback */}
               <img
-                src="/images/keyboard.jpg"
-                alt="Test Keyboard"
-                style={{ width: 100, height: 100, border: '2px solid red' }}
+                src={item.image && item.image.startsWith('/') ? item.image : `/images/${item.image}`}
+                alt={item.name}
+                style={{ width: 100, height: 100, border: '2px solid #ccc' }}
+                onError={e => { e.target.src = '/images/placeholder.png'; }}
               />
               {/* Debug: Show image path under image */}
               <div style={{ fontSize: '0.7em', color: '#888', wordBreak: 'break-all' }}>
-                image: {item.image ? (item.image.startsWith('/') ? item.image : `/images/${item.image}`) : '/images/Placeholder.jpg'}
+                image: {item.image ? (item.image.startsWith('/') ? item.image : `/images/${item.image}`) : '/images/placeholder.png'}
               </div>
               <div className="cart-item-details">
                 <span className="item-name">{item.name}</span>
@@ -53,7 +61,7 @@ export default function Cart({ cartItems, onUpdateQuantity, onRemoveFromCart, on
               <div className="item-controls">
                 {/* Decrease Quantity Button */}
                 <button 
-                  onClick={() => onUpdateQuantity(item.id, item.quantity - 1)}
+                  onClick={() => updateCartItemQuantity(item.id, item.quantity - 1)}
                   disabled={item.quantity <= 1} 
                   className="qty-btn"
                 >
@@ -64,12 +72,12 @@ export default function Cart({ cartItems, onUpdateQuantity, onRemoveFromCart, on
                   type="number" 
                   value={item.quantity} 
                   min="1"
-                  onChange={(e) => onUpdateQuantity(item.id, parseInt(e.target.value) || 1)}
+                  onChange={e => updateCartItemQuantity(item.id, parseInt(e.target.value) || 1)}
                   className="qty-input"
                 />
                 {/* Increase Quantity Button */}
                 <button 
-                  onClick={() => onUpdateQuantity(item.id, item.quantity + 1)}
+                  onClick={() => updateCartItemQuantity(item.id, item.quantity + 1)}
                   className="qty-btn"
                 >
                   +
@@ -77,7 +85,7 @@ export default function Cart({ cartItems, onUpdateQuantity, onRemoveFromCart, on
                 {/* Remove Button */}
                 <button 
                   className="remove-btn"
-                  onClick={() => onRemoveFromCart(item.id, 0)}
+                  onClick={() => removeProductFromCart(item.id)}
                   title="Remove from cart"
                   style={{ display: 'flex', alignItems: 'center', gap: '4px' }}
                 >
@@ -95,3 +103,4 @@ export default function Cart({ cartItems, onUpdateQuantity, onRemoveFromCart, on
     </div>
   );
 }
+

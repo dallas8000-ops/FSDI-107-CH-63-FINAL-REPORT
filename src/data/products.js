@@ -2,11 +2,10 @@
 
 // This array holds ALL products displayed on the catalog page.
 export const products = [
-  // --- EXISTING PRODUCTS (IDs 1-3) ---
   {
     id: 1,
     name: 'Wireless Mechanical Keyboard',
-    img: '/images/keyboard.jpg', // Confirmed: Keyboard.jpg
+    image: '/images/keyboard.jpg',
     price: 129.99,
     oldPrice: 159.99,
     discount: 18,
@@ -17,7 +16,7 @@ export const products = [
   {
     id: 2,
     name: '4K Ultra HD Monitor',
-    img: '/images/monitor.jpg', // Confirmed: monitor.jpg
+    image: '/images/monitor.jpg',
     price: 399.95,
     oldPrice: 450.00,
     discount: 11,
@@ -28,7 +27,7 @@ export const products = [
   {
     id: 3,
     name: 'Precision Gaming Mouse',
-    img: '/images/mouse.jpg', // Confirmed: mouse.jpg
+    image: '/images/mouse.jpg',
     price: 59.99,
     oldPrice: 79.99,
     discount: 25,
@@ -36,29 +35,28 @@ export const products = [
     description: '20,000 DPI sensor and ultra-lightweight design.',
     category: 'Mouse'
   },
-  // --- NEW PRODUCTS (IDs 4-8) ---
   {
-    id: 4, 
+    id: 4,
     name: 'Full HD Streaming Webcam',
-    img: '/images/webcam.png', // Confirmed: webcam.png
+    image: '/images/webcam.png',
     price: 79.99,
     stars: 4.2,
     description: 'Crystal clear video for meetings and streaming.',
     category: 'Peripherals'
   },
   {
-    id: 5, 
+    id: 5,
     name: 'High-Speed USB Hub',
-    img: '/images/usbs.png', // Confirmed: usb.png
+    image: '/images/usbs.png',
     price: 24.50,
     stars: 4.5,
     description: 'Four port USB 3.0 hub for fast data transfer.',
     category: 'Accessory'
   },
   {
-    id: 6, 
+    id: 6,
     name: 'Modern Smartwatch',
-    img: '/images/smartwatch.png', // Confirmed: smartwatch.png
+    image: '/images/smartwatch.png',
     price: 199.00,
     oldPrice: 249.00,
     discount: 20,
@@ -67,28 +65,27 @@ export const products = [
     category: 'Wearable'
   },
   {
-    id: 7, 
+    id: 7,
     name: '32GB DDR4 Memory Module',
-    img: '/images/memory.png', // Confirmed: memory.png
+    image: '/images/memory.png',
     price: 85.00,
     stars: 4.9,
     description: 'Boost your PC performance with fast RAM.',
     category: 'Component'
   },
   {
-    id: 8, 
+    id: 8,
     name: 'Ergonomic Computer Desk',
-    img: '/images/computer desk.png', // Confirmed: Computer desk.png
+    image: '/images/computer desk.png',
     price: 349.00,
     stars: 4.3,
     description: 'Large surface area for multiple monitors and gear.',
     category: 'Furniture'
   },
-  // --- NEWLY ADDED PRODUCTS (IDs 9-16) ---
   {
-    id: 9, 
+    id: 9,
     name: 'Dell Premium Laptop',
-    img: '/images/Dell Laptop.jpg',
+    image: '/images/Dell Laptop.jpg',
     price: 899.99,
     oldPrice: 1099.99,
     discount: 18,
@@ -97,9 +94,9 @@ export const products = [
     category: 'Laptop'
   },
   {
-    id: 10, 
+    id: 10,
     name: 'Professional Drones',
-    img: '/images/Drones.jpg',
+    image: '/images/Drones.jpg',
     price: 1299.00,
     oldPrice: 1499.00,
     discount: 13,
@@ -108,9 +105,9 @@ export const products = [
     category: 'Drone'
   },
   {
-    id: 11, 
+    id: 11,
     name: 'iPhone Latest Model',
-    img: '/images/Iphone.jpg',
+    image: '/images/Iphone.jpg',
     price: 999.00,
     oldPrice: 1099.00,
     discount: 9,
@@ -119,9 +116,9 @@ export const products = [
     category: 'Phone'
   },
   {
-    id: 12, 
+    id: 12,
     name: 'Nintendo 3DS Console',
-    img: '/images/Nintendo 3DS.jpg',
+    image: '/images/Nintendo 3DS.jpg',
     price: 299.99,
     oldPrice: 349.99,
     discount: 14,
@@ -130,9 +127,9 @@ export const products = [
     category: 'Gaming'
   },
   {
-    id: 13, 
+    id: 13,
     name: 'Oculus VR Headset',
-    img: '/images/Oculus Headset.jpg',
+    image: '/images/Oculus Headset.jpg',
     price: 799.00,
     oldPrice: 899.00,
     discount: 11,
@@ -141,18 +138,18 @@ export const products = [
     category: 'VR'
   },
   {
-    id: 14, 
+    id: 14,
     name: 'Phone Card Holder',
-    img: '/images/Phone Card holder.jpg',
+    image: '/images/Phone Card holder.jpg',
     price: 19.99,
     stars: 4.4,
     description: 'Stylish and secure card holder for your smartphone.',
     category: 'Accessory'
   },
   {
-    id: 15, 
+    id: 15,
     name: 'PlayStation 5 Console',
-    img: '/images/PS5.jpg',
+    image: '/images/PS5.jpg',
     price: 499.99,
     oldPrice: 549.99,
     discount: 9,
@@ -161,9 +158,9 @@ export const products = [
     category: 'Gaming'
   },
   {
-    id: 16, 
+    id: 16,
     name: 'PS5 Controller',
-    img: '/images/PS5 Controller.jpg',
+    image: '/images/PS5 Controller.jpg',
     price: 74.99,
     oldPrice: 89.99,
     discount: 17,

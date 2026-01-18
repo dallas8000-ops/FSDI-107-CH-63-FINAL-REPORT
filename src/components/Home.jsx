@@ -10,6 +10,11 @@ const Home = () => {
     <main className="home">
       <section className="hero">
         <div className="hero-content">
+          {/* User name above Cart link */}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '1rem' }}>
+            <span style={{ color: 'maroon', fontWeight: 'bold', fontSize: '1.2rem' }}>dallas8000</span>
+            <a href="/cart" style={{ color: '#4F8EF7', fontWeight: 'bold', textDecoration: 'none', marginTop: '4px' }}>Go to Cart</a>
+          </div>
           <h1>Computer Gadgets Store <IconHome size={38} color="#4F8EF7" style={{verticalAlign: 'middle', marginLeft: 8}} /></h1>
           <p>Welcome to your favorite computer gadgets shop!</p>
           <p className="subtitle">Discover the latest and greatest in computer technology</p>
