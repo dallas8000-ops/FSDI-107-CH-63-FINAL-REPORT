@@ -49,10 +49,6 @@ export default function Cart() {
                 style={{ width: 100, height: 100, border: '2px solid #ccc' }}
                 onError={e => { e.target.src = '/images/placeholder.png'; }}
               />
-              {/* Debug: Show image path under image */}
-              <div style={{ fontSize: '0.7em', color: '#888', wordBreak: 'break-all' }}>
-                image: {item.image ? (item.image.startsWith('/') ? item.image : `/images/${item.image}`) : '/images/placeholder.png'}
-              </div>
               <div className="cart-item-details">
                 <span className="item-name">{item.name}</span>
                 <span className="item-unit-price">${item.price.toFixed(2)} each</span>

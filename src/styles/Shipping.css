@@ -7,7 +7,24 @@
 .shipping-header {
   text-align: center;
   margin-bottom: 40px;
-  background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+  background: linear-gradient(90deg, var(--blue-3) 0%, var(--blue-13) 100%);
+  /* Place Order Button Gradient */
+  .place-order-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background: linear-gradient(90deg, var(--blue-11), var(--blue-14));
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    box-shadow: 0 2px 8px rgba(58, 114, 226, 0.10);
+  }
+  .place-order-btn:hover {
+    background: linear-gradient(90deg, var(--blue-14), var(--blue-11));
+    box-shadow: 0 4px 12px rgba(58, 114, 226, 0.18);
+  }
   color: white;
   padding: 40px;
   border-radius: 15px;

@@ -6,6 +6,23 @@
 }
 
 :root {
+  /* Custom Blue/Cyan Palette */
+  --blue-1: #72d5f2;
+  --blue-2: #6be7f9;
+  --blue-3: #799feb;
+  --blue-4: #f6c8f5;
+  --blue-5: #77eded;
+  --blue-6: #52cbef;
+  --blue-7: #49e1f7;
+  --blue-8: #5989e7;
+  --blue-9: #4dbcf3;
+  --blue-10: #58e9e9;
+  --blue-11: #31c2ec;
+  --blue-12: #27dbf6;
+  --blue-13: #3a72e2;
+  --blue-14: #2caff1;
+  --blue-15: #38e5e5;
+  /* Existing palette for fallback */
   --primary-purple: #667eea;
   --primary-indigo: #764ba2;
   --primary-teal: #0099ff;

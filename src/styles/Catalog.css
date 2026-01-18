@@ -20,29 +20,35 @@
 .catalog-header h2 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #1a1a1a;
   margin: 0;
+  background: linear-gradient(90deg, var(--blue-3), var(--blue-13));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
 }
 
 .edit-mode-toggle {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: linear-gradient(90deg, var(--blue-11), var(--blue-14));
+  color: #fff;
   border: none;
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(58, 114, 226, 0.10);
 }
 
 .edit-mode-toggle:hover {
+  background: linear-gradient(90deg, var(--blue-13), var(--blue-11));
+  box-shadow: 0 4px 12px rgba(58, 114, 226, 0.18);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 
 .edit-panel {
-  background: #f9f9f9;
-  border: 2px solid #667eea;
+  background: linear-gradient(90deg, var(--blue-2), var(--blue-5));
+  border: 2px solid var(--blue-13);
   border-radius: 12px;
   padding: 1.5rem;
   margin-bottom: 2rem;
@@ -50,7 +56,7 @@
 
 .edit-panel h3 {
   margin-top: 0;
-  color: #667eea;
+  color: var(--blue-13);
 }
 
 .edit-form {

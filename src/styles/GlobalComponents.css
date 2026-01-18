@@ -3,10 +3,10 @@
 /* --- NAVBAR STYLES --- */
 
 .navbar {
-  background: #1f2937; /* Dark slate gray/blue */
+  background: linear-gradient(90deg, var(--blue-1) 0%, var(--blue-3) 50%, var(--blue-5) 100%);
   color: white;
   padding: 1rem 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(49, 194, 236, 0.12);
 }
 
 .navbar-container {
@@ -21,25 +21,30 @@
   margin: 0;
   font-size: 1.5rem;
   font-weight: 700;
-  color: #a5f3fc; /* Light teal/cyan highlight for brand name */
+  background: linear-gradient(90deg, var(--blue-7), var(--blue-13));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
 }
 
 /* Cart Button */
 .cart-button {
-  background: #f9fafb; /* Off-white background */
-  color: #1f2937; /* Dark text */
+  background: linear-gradient(90deg, var(--blue-11), var(--blue-14));
+  color: #fff;
   border: none;
   padding: 0.5rem 1.5rem;
   border-radius: 8px;
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.1s ease;
+  transition: background 0.2s, transform 0.1s;
+  box-shadow: 0 2px 8px rgba(58, 114, 226, 0.10);
 }
 
 .cart-button:hover {
-  background: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(90deg, var(--blue-13), var(--blue-11));
+  box-shadow: 0 4px 12px rgba(58, 114, 226, 0.18);
 }
 
 .cart-button:active {
@@ -49,10 +54,10 @@
 /* --- FOOTER STYLES --- */
 
 .footer {
-  background: #e5e7eb; /* Light gray background */
-  color: #4b5563; /* Darker gray text */
+  background: linear-gradient(90deg, var(--blue-5) 0%, var(--blue-2) 100%);
+  color: #2d3748;
   padding: 2rem 2rem;
-  border-top: 1px solid #d1d5db;
+  border-top: 1px solid var(--blue-10);
   text-align: center;
 }
 

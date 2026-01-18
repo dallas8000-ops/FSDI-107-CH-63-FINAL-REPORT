@@ -1,4 +1,5 @@
 import React from 'react';
+import FloatingImagesBackground from './FloatingImagesBackground';
 import { IconHome } from '@tabler/icons-react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Home.css';
@@ -7,8 +8,9 @@ const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <main className="home">
-      <section className="hero">
+    <main className="home" style={{ position: 'relative', zIndex: 1 }}>
+      <FloatingImagesBackground />
+      <section className="hero" style={{ position: 'relative', zIndex: 2 }}>
         <div className="hero-content">
           {/* User name above Cart link */}
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '1rem' }}>
@@ -31,7 +33,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="features">
+      <section className="features" style={{ position: 'relative', zIndex: 2 }}>
         <div className="feature-card">
           <h3>🛍️ Wide Selection</h3>
           <p>Browse our extensive collection of computer gadgets and accessories</p>
