@@ -8,9 +8,11 @@ import Footer from './components/Footer';
 import Home from './components/Home';
 import About from './components/About';
 import Catalog from './components/Catalog';
+
 import NotFound from './components/NotFound';
 import Adm from './pages/Adm';
 import Cart from './pages/Cart';
+import Shipping from './pages/Shipping';
 
 import './styles/App.css';
 
@@ -28,6 +30,7 @@ function App() {
               <Route path='/about' element={<About />} />
               <Route path='/catalog' element={<Catalog />} />
               <Route path='/cart' element={<Cart />} />
+              <Route path='/shipping' element={<Shipping />} />
               <Route path='/admin' element={<Adm />} />
               <Route path='*' element={<NotFound />} />
             </Routes>
