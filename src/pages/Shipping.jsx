@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import FloatingImagesBackground from '../components/FloatingImagesBackground';
 import { useNavigate } from 'react-router-dom';
 import GlobalContext from '../state/globalContext';
 import '../styles/Shipping.css';
@@ -32,47 +33,48 @@ export default function Shipping() {
   };
 
   return (
-    <div className="shipping-container">
-      <h2>Shipping & Payment</h2>
-      <div className="shipping-section">
-        <h3>Choose Shipping Method</h3>
-        {shippingOptions.map(option => (
-          <label key={option.name} className="shipping-option">
-            <input
-              type="radio"
-              name="shipping"
-              value={option.name}
-              checked={selectedShipping.name === option.name}
-              onChange={() => setSelectedShipping(option)}
-            />
-            {option.name} (${option.cost.toFixed(2)})
-          </label>
-        ))}
+      <div className="shipping-container" style={{ position: 'relative', zIndex: 1 }}>
+        <FloatingImagesBackground />
+        <h2>Shipping & Payment</h2>
+        <div className="shipping-section">
+          <h3>Choose Shipping Method</h3>
+          {shippingOptions.map(option => (
+            <label key={option.name} className="shipping-option">
+              <input
+                type="radio"
+                name="shipping"
+                value={option.name}
+                checked={selectedShipping.name === option.name}
+                onChange={() => setSelectedShipping(option)}
+              />
+              {option.name} (${option.cost.toFixed(2)})
+            </label>
+          ))}
+        </div>
+        <div className="payment-section">
+          <h3>Choose Payment Method</h3>
+          {paymentOptions.map(option => (
+            <label key={option.value} className="payment-option">
+              <input
+                type="radio"
+                name="payment"
+                value={option.value}
+                checked={selectedPayment === option.value}
+                onChange={() => setSelectedPayment(option.value)}
+              />
+              {option.name}
+            </label>
+          ))}
+        </div>
+        <div className="summary-section">
+          <h3>Order Summary</h3>
+          <div>Products Total: <strong>${cartTotal.toFixed(2)}</strong></div>
+          <div>Shipping: <strong>${selectedShipping.cost.toFixed(2)}</strong></div>
+          <div className="total-cost">Total: <strong>${totalCost.toFixed(2)}</strong></div>
+        </div>
+        <button className="place-order-btn" onClick={handlePayment}>
+          Place Order
+        </button>
       </div>
-      <div className="payment-section">
-        <h3>Choose Payment Method</h3>
-        {paymentOptions.map(option => (
-          <label key={option.value} className="payment-option">
-            <input
-              type="radio"
-              name="payment"
-              value={option.value}
-              checked={selectedPayment === option.value}
-              onChange={() => setSelectedPayment(option.value)}
-            />
-            {option.name}
-          </label>
-        ))}
-      </div>
-      <div className="summary-section">
-        <h3>Order Summary</h3>
-        <div>Products Total: <strong>${cartTotal.toFixed(2)}</strong></div>
-        <div>Shipping: <strong>${selectedShipping.cost.toFixed(2)}</strong></div>
-        <div className="total-cost">Total: <strong>${totalCost.toFixed(2)}</strong></div>
-      </div>
-      <button className="place-order-btn" onClick={handlePayment}>
-        Place Order
-      </button>
-    </div>
   );
 }

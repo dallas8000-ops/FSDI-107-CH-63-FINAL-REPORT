@@ -7,7 +7,6 @@ export default function FloatingImagesBackground() {
 
   useEffect(() => {
     getItems().then(items => {
-      // Only use items with images
       setImages(items.filter(i => i.image).map(i => i.image.startsWith('/') ? i.image : `/images/${i.image}`));
     });
   }, []);

@@ -8,12 +8,11 @@ import Footer from './components/Footer';
 import Home from './components/Home';
 import About from './components/About';
 import Catalog from './components/Catalog';
-
 import NotFound from './components/NotFound';
 import Adm from './pages/Adm';
 import Cart from './pages/Cart';
 import Shipping from './pages/Shipping';
-
+import FloatingImagesBackground from './components/FloatingImagesBackground';
 import './styles/App.css';
 
 function App() {
@@ -23,6 +22,7 @@ function App() {
     <GlobalProvider>
       <BrowserRouter>
         <div className={mode === 'dark' ? 'dark-mode' : 'light-mode'}>
+          <FloatingImagesBackground />
           <Navbar mode={mode} toggleMode={toggleMode} />
           <main className={mode === 'dark' ? 'bg-dark text-light py-4 px-5' : 'bg-light py-4 px-5'}>
             <Routes>
